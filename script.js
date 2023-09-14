@@ -115,3 +115,93 @@ function evoluirVida(classe){
       atualizarPontosEvolucao();
     }
 
+    function inimigo (nome, vida, dano, imagem){
+        this.nome = nome;
+        this.vida = vida;
+        this.dano = dano;
+        this.imagem = imagem;
+    }
+
+    var inimigos[];
+
+    function criarinimigos(){
+        var orc = new inimigo("Orc", 20, 10, "image4.png");
+        var orcShaman = new inimigo("Orc Shaman" 20, 30, "image5.png");
+        var orcChefe = new inimigo ("Orc Chefe", 50, 10, "image6.png");
+        var orcs = [orc, orcShaman, orcChefe];
+
+        var esqueleto = new Inimigo("Esqueleto", 10, 20, "img07.png");
+        var zumbi = new Inimigo("Zumbi", 20, 30, "img08.png");
+        var zumbiChefe = new Inimigo("Zumbi Chefe", 30, 50, "img09.png");
+        var mortosvivos = [esqueleto, zumbi, zumbiChefe];
+
+        var imp = new Inimigo("Imp", 20, 20, "img10.png");
+
+        var demonio = new Inimigo("Demônio", 30, 30, "img11.png");
+        var demonioChefe = new Inimigo("Demônio Chefe", 50, 40, "img12.png");
+        var demonios = [imp, demonio, demonioChefe];
+      
+      
+        inimigos = [orcs, mortosvivos, demonios];
+
+    }
+
+ // battle config:
+
+
+var indexPersonagem = 1;
+var indexGrupoinimigos;
+var indexInimigoAlvo;
+
+    function selecionarInimigos(){
+        indexGrupoInimigos = $("#selecaoInimigosId").val();
+
+        var htmlOptions = "";
+
+        for(var i=0; i<3; i++) {
+            htmlOptions += "<option value= " + i + ">" + inimigos[indexGrupoInimigos][i].nome + "</option>";   
+        }
+    
+$("#inimigosEscolhidosId").html(htmlOptions);
+    atualizarDadosAlvo();
+}
+
+function atualizarDadosAlvo() {
+    indexInimigoAlvo = parseInt($("#inimigosEscolhidosId").val());
+
+    $("#vidaInimigoId").html(inimigos[indexGrupoInimigos][indexInimigoAlvo].vida);
+    $("#danoInimigoId").html(inimigos[indexGrupoInimigos][indexInimigoAlvo].dano);
+    $("#imagemInimigoId").attr("src", inimigos[indexGrupoInimigos][indexInimigoAlvo].imagem);
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
